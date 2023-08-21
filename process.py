@@ -235,10 +235,11 @@ def draw_landmarks_on_image(rgb_image, detection_result):
     return annotated_image
 
 
-def to_gif(images, duration):
+def to_gif(image_path, images, duration):
     """Converts image sequence (4D numpy array) to gif."""
-    imageio.mimsave('./output_gif/animation.gif', images, duration=duration)
-    return embed.embed_file('./output_gif/animation.gif')
+    imageio.mimsave('./output_gif/{}.gif'.format(image_path),
+                    images, duration=duration)
+    return embed.embed_file('./output_gif/{}.gif'.format(image_path))
 
 
 def progress(value, max=100):
@@ -481,7 +482,8 @@ def get_video_assarray(path):
 
 
 # Load the input image.
-image_path = 'dataset\W04070.mp4'
+image_path = 'dataset\D0533.mp4'
+image_name = image_path.split("\\")[-1].split(".")[0]
 # image = tf.io.read_file(image_path)
 # image = tf.image.decode_gif(image)
 
@@ -528,4 +530,4 @@ for frame_idx in range(num_frames):
 
 # Prepare gif visualization.
 output = np.stack(output_images, axis=0)
-to_gif(output, duration=100)
+to_gif(image_name, output, duration=100)

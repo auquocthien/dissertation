@@ -42,8 +42,7 @@ options = vision.PoseLandmarkerOptions(
 detector = vision.PoseLandmarker.create_from_options(options)
 
 # STEP 3: Load the input image.
-image = mp.Image.create_from_file(
-    "image\z4606875056124_2c649e797c1974b6a4d216611103e88c.jpg")
+image = mp.Image.create_from_file("image\_103906767_gettyimages-627873774.jpg")
 
 # STEP 4: Detect pose landmarks from the input image.
 detection_result = detector.detect(image)
